@@ -37,7 +37,9 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isPaused, counter]);
   return (
-    <div style={{ marginTop: "50px" }}>
+    <div
+      style={{ marginTop: "50px", justifyContent: " center", display: " flex" }}
+    >
       <div style={{ width: "65%", display: "flex" }}>
         <div
           style={{ width: "100%", flexDirection: "column", paddingTop: 100 }}
