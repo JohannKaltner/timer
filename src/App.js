@@ -52,7 +52,7 @@ function App() {
               display: "flex",
             }}
           >
-            <img src={Image} width="200px" height="200px" />
+            <img alt="logo" src={Image} width="200px" height="200px" />
           </div>
         </div>
 
