@@ -38,11 +38,20 @@ function App() {
   }, [isPaused, counter]);
   return (
     <div
-      style={{ marginTop: "50px", justifyContent: " center", display: " flex" }}
+      style={{
+        marginTop: "10rem",
+        justifyContent: " center",
+        display: " flex",
+      }}
     >
       <div style={{ width: "65%", display: "flex" }}>
         <div
-          style={{ width: "100%", flexDirection: "column", paddingTop: 100 }}
+          style={{
+            width: "100%",
+            flexDirection: "column",
+            paddingTop: 100,
+            marginRight: 20,
+          }}
         >
           <div style={{ width: "100%", display: "flex" }}>
             <Timer isPaused={isPaused} />

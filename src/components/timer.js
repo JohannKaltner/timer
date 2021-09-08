@@ -2,7 +2,7 @@ import React from "react";
 
 const Timer = ({ isPaused }) => {
   const [seconds, setSeconds] = React.useState(0);
-  const [minutes, setMinutes] = React.useState(0);
+  const [minutes, setMinutes] = React.useState(2);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     if (isPaused) return;
