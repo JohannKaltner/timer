@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import "./App.css";
 import Timer from "./components/timer";
@@ -13,9 +13,6 @@ function App() {
       console.log("cai");
       console.log(key);
       switch (key) {
-        case "r":
-          setPause("reset");
-
         case "p":
           setPause(!isPaused);
           break;
@@ -25,6 +22,8 @@ function App() {
         case "i":
           setCounter(0);
           break;
+        default:
+          return;
       }
     };
 
@@ -46,7 +45,13 @@ function App() {
           <div style={{ width: "100%", display: "flex" }}>
             <Timer isPaused={isPaused} />
           </div>
-          <div style={{ width: "100% " }}>
+          <div
+            style={{
+              width: "100% ",
+              justifyContent: "center",
+              display: "flex",
+            }}
+          >
             <img src={Image} width="200px" height="200px" />
           </div>
         </div>
