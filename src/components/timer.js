@@ -49,10 +49,6 @@ export default function Timer() {
   const [status, setStatus] = useState(STATUS.STARTED);
   const [isPaused, setPause] = React.useState(false);
 
-  const handleStart = () => {
-    setStatus(STATUS.STARTED);
-  };
-
   useEffect(() => {
     const onKeyDown = (e) => {
       switch (e.keyCode) {

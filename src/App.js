@@ -5,7 +5,6 @@ import Timer from "./components/timer";
 import Counter from "./components/counter";
 import Image from "./ibjjf.png";
 function App() {
-  const [isPaused, setPause] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
   const [reset, setReset] = React.useState(false);
 
@@ -32,7 +31,7 @@ function App() {
       // document.removeEventListener("keyup", onKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPaused, counter, reset]);
+  }, [counter, reset]);
   return (
     <div
       style={{
@@ -52,11 +51,7 @@ function App() {
           }}
         >
           <div style={{ width: "100%", display: "flex" }}>
-            <Timer
-              isPaused={isPaused}
-              reset={reset}
-              callbackReset={() => setReset(false)}
-            />
+            <Timer reset={reset} callbackReset={() => setReset(false)} />
           </div>
           <div
             style={{
