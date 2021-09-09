@@ -73,7 +73,7 @@ export default function Timer() {
       // document.removeEventListener("keyup", onKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   const handleStop = () => {
     setTime(initialState);
