@@ -7,20 +7,21 @@ import Image from "./ibjjf.png";
 function App() {
   const [isPaused, setPause] = React.useState(false);
   const [counter, setCounter] = React.useState(0);
+  const [reset, setReset] = React.useState(false);
 
   useEffect(() => {
-    const onKeyDown = ({ key }) => {
-      console.log("cai");
-      console.log(key);
-      switch (key) {
-        case "p":
+    const onKeyDown = (e) => {
+      console.log(e.keyCode);
+      switch (e.keyCode) {
+        case 80:
           setPause(!isPaused);
           break;
-        case "o":
+        case 32:
           setCounter(counter + 2);
           break;
-        case "i":
+        case 82:
           setCounter(0);
+          setReset(true);
           break;
         default:
           return;
@@ -35,11 +36,12 @@ function App() {
       // document.removeEventListener("keyup", onKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isPaused, counter]);
+  }, [isPaused, counter, reset]);
   return (
     <div
       style={{
-        marginTop: "10rem",
+        height: "100vh",
+        alignItems: "center",
         justifyContent: " center",
         display: " flex",
       }}
@@ -54,7 +56,11 @@ function App() {
           }}
         >
           <div style={{ width: "100%", display: "flex" }}>
-            <Timer isPaused={isPaused} />
+            <Timer
+              isPaused={isPaused}
+              reset={reset}
+              callbackReset={() => setReset(false)}
+            />
           </div>
           <div
             style={{
