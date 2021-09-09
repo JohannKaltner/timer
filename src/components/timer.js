@@ -76,6 +76,7 @@ export default function Timer() {
   };
   const handlePause = () => {
     setPause(!isPaused);
+    setStatus(status);
   };
 
   useInterval(
