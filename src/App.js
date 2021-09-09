@@ -13,6 +13,7 @@ function App() {
       console.log(e.keyCode);
       switch (e.keyCode) {
         case 32:
+          if (counter === 4) return;
           setCounter(counter + 2);
           break;
         case 82:
