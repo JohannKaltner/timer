@@ -41,13 +41,13 @@ import React, { useState, useEffect, useRef } from "react";
 
 const STATUS = {
   STARTED: "Started",
-  STOPPED: "Stopped",
 };
 
 export default function Timer() {
   const initialState = { seconds: 0, minutes: 0 };
   const [time, setTime] = React.useState(initialState);
-  const [status, setStatus] = useState(STATUS.STOPPED);
+  const [status, setStatus] = useState(STATUS.STARTED);
+  const [isPaused, setPause] = React.useState(false);
 
   const handleStart = () => {
     setStatus(STATUS.STARTED);
@@ -56,6 +56,8 @@ export default function Timer() {
   useEffect(() => {
     const onKeyDown = (e) => {
       switch (e.keyCode) {
+        case 80:
+          handlePause();
         case 82:
           handleStop();
           break;
@@ -72,12 +74,12 @@ export default function Timer() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => {
-    handleStart();
-  }, []);
 
   const handleStop = () => {
     setTime(initialState);
+  };
+  const handlePause = () => {
+    setPause(!isPaused);
   };
 
   useInterval(
@@ -86,10 +88,10 @@ export default function Timer() {
         setTime({ minutes: time.minutes + 1, seconds: 0 });
         return;
       }
+      if (isPaused) return;
       setTime({ ...time, seconds: time.seconds + 1 });
     },
     status === STATUS.STARTED ? 1000 : null
-    // passing null stops the interval
   );
   return (
     <div style={{ fontSize: "20vh", display: "flex" }}>
@@ -99,7 +101,6 @@ export default function Timer() {
   );
 }
 
-// source: https://overreacted.io/making-setinterval-declarative-with-react-hooks/
 function useInterval(callback, delay) {
   const savedCallback = useRef();
 
@@ -114,8 +115,7 @@ function useInterval(callback, delay) {
       savedCallback.current();
     }
     if (delay !== null) {
-      let id = setInterval(tick, delay);
-      return () => clearInterval(id);
+      setInterval(tick, delay);
     }
   }, [delay]);
 }

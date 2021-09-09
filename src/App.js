@@ -13,15 +13,8 @@ function App() {
     const onKeyDown = (e) => {
       console.log(e.keyCode);
       switch (e.keyCode) {
-        case 80:
-          setPause(!isPaused);
-          break;
         case 32:
           setCounter(counter + 2);
-          break;
-        case 82:
-          setCounter(0);
-          setReset(true);
           break;
         default:
           return;
