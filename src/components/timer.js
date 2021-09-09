@@ -54,6 +54,7 @@ export default function Timer() {
       switch (e.keyCode) {
         case 80:
           handlePause();
+          break;
         case 82:
           handleStop();
           break;
