@@ -16,6 +16,9 @@ function App() {
         case 32:
           setCounter(counter + 2);
           break;
+        case 82:
+          setCounter(0);
+          break;
         default:
           return;
       }
