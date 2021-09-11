@@ -4,10 +4,12 @@ import "./App.css";
 import Timer from "./components/timer";
 import Counter from "./components/counter";
 import Image from "./new.png";
+import Image2 from "./ibjjf.png";
+
 function App() {
   const [counter, setCounter] = React.useState(0);
   const [reset, setReset] = React.useState(false);
-
+  const [primary, setPrimary] = React.useState(false);
   useEffect(() => {
     const onKeyDown = (e) => {
       console.log(e.keyCode);
@@ -18,6 +20,9 @@ function App() {
           break;
         case 82:
           setCounter(0);
+          break;
+        case 83:
+          setPrimary(!primary);
           break;
         default:
           return;
@@ -32,7 +37,7 @@ function App() {
       // document.removeEventListener("keyup", onKeyDown);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [counter, reset]);
+  }, [counter, reset, primary]);
   return (
     <div
       style={{
@@ -61,7 +66,12 @@ function App() {
               display: "flex",
             }}
           >
-            <img alt="logo" src={Image} width="200px" height="200px" />
+            <img
+              alt="logo"
+              src={primary ? Image : Image2}
+              width="200px"
+              height="200px"
+            />
           </div>
         </div>
 
