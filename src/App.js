@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Timer from "./components/timer";
 import Counter from "./components/counter";
-import Image from "./ibjjf.png";
+import Image from "./new.png";
 function App() {
   const [counter, setCounter] = React.useState(0);
   const [reset, setReset] = React.useState(false);
